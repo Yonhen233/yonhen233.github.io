@@ -1,0 +1,2 @@
+InfoPlus.Controls.Suggester2.isPagePopup=function(){return false;}
+InfoPlus.Suggester.isPagePopup=function(){return false;}

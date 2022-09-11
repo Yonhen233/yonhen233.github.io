@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<!-- saved from url=(0039)http://yzbfw.ccnu.edu.cn/Hzsd/time.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	
+	<title>Document</title>
+</head>
+<body>
+	<div id="Clock" align="center" style="font-size: 20px; color:#000000;border: 0; width-height:30px;margin:0px;">2022年09月11日  19:32:37.7</div>
+
+<script>
+function tick() {
+ var hours, minutes, seconds, xfile;
+ var intHours, intMinutes, intSeconds;
+ var today, theday;
+ today = new Date();
+ function initArray(){
+  this.length=initArray.arguments.length
+  for(var i=0;i<this.length;i++)
+  this[i+1]=initArray.arguments[i] }
+  var d=new initArray(
+  "星期日",
+  "星期一",
+  "星期二",
+  "星期三",
+  "星期四",
+  "星期五",
+  "星期六");
+  	var year=today.getFullYear();
+	var month=change(today.getMonth()+1);
+	var day=change(today.getDate());
+	var hour=change(today.getHours());
+	var minute=change(today.getMinutes());
+	var second=change(today.getSeconds());
+	var millise=parseInt(today.getMilliseconds() / 100);
+	function change(t){
+		if(t<10){
+			return "0"+t;
+		}else{
+			return t;
+		}
+	}
+	
+ <!-- theday = year+"年" + month+"月" +day +"日"+" "+d[today.getDay()+1];-->
+   theday = year+"年" + month+"月" +day +"日"+" ";
+  intHours = today.getHours();
+  intMinutes = today.getMinutes();
+  intSeconds = today.getSeconds() ;
+  if (intHours == 0) {//判断小时
+   hours = "00:";
+   xfile = "午夜";
+  } else if (intHours < 12) {
+   hours = hour+":";
+   xfile = "上午";
+  } else if (intHours == 12) {
+   hours = hour+":";
+   xfile = "正午";
+  } else {
+   hours = intHours + ":";
+   xfile = "下午";
+  }
+  if (intMinutes < 10) {//判断分钟是否小于10，小于，则加个0前面
+   minutes = "0"+intMinutes+":";
+  } else {
+   minutes = intMinutes+":";
+  }
+  if (intSeconds < 10) {//判断秒
+   seconds = "0"+intSeconds+"";
+  } else {
+   seconds = intSeconds+"";
+  }
+  <!-- timeString = theday+" "+xfile+hours+minutes+seconds;-->
+    timeString = theday+" "+hours+minutes+seconds+"."+millise;
+   Clock.innerHTML = timeString;
+   window.setTimeout("tick();", 100);
+ }
+ window.onload = tick;
+</script>
+
+</body></html>
